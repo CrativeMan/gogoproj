@@ -3,8 +3,10 @@
 
   inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*.tar.gz";
 
-  outputs = { self, pkgs, nixpkgs }:
+  outputs = { self, nixpkgs }:
     let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
       goVersion = 22; # Change this to update the whole stack
 
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
@@ -35,14 +37,14 @@
         };
       });
 
-      packages.default = pkgs.buildGoModule
+      packages.x86_64-linux.default = pkgs.buildGoModule
         rec {
           pname = "gogoproj";
           version = "0.1.0";
 
           src = ./src;
 
-          vendorHash = "sha256-jiy29BPPP2dojTT16uRVRnN3Cs2ZIl2WDmEp4eIcr7A=";
+          vendorHash = "sha256-HZDEbwXAoAiEINxWkGmMUzXWnGk0MQ8phwo4HSBmd0c=";
         };
     };
 }
