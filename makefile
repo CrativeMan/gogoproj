@@ -5,7 +5,7 @@ GOTEST=$(GOCMD) test
 GOMOD=$(GOCMD) mod
 SRCFOLDER = src
 BINFOLDER = bin
-BINARY_NAME=main
+BINARY_NAME=gogo
 
 all: build
 
