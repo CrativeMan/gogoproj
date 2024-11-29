@@ -6,9 +6,8 @@ import (
 	"github.com/charmbracelet/huh"
 )
 
-func InitialForm() (int, bool, string, error) {
+func InitialForm() (int, string, error) {
 	var projType int
-	var flakeCheck bool
 	var folder string
 	var initialForm = huh.NewForm(
 		huh.NewGroup(
@@ -22,12 +21,6 @@ func InitialForm() (int, bool, string, error) {
 				).
 				Value(&projType),
 
-			huh.NewConfirm().
-				Title("Don't generate a flake.nix and flake.lock file?").
-				Value(&flakeCheck).
-				Affirmative("Yes").
-				Negative("No"),
-
 			huh.NewInput().
 				Title("Which folder do you want to use?").
 				Placeholder("Folder").
@@ -38,8 +31,8 @@ func InitialForm() (int, bool, string, error) {
 
 	err := initialForm.Run()
 	if err != nil {
-		return 0, false, "", err
+		return 0, "", err
 	} else {
-		return projType, flakeCheck, folder, nil
+		return projType, folder, nil
 	}
 }

@@ -2,6 +2,7 @@ package logger
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"time"
 )
@@ -30,5 +31,5 @@ func (l *logger) Warn(msg string) {
 
 func (l *logger) Error(msg string) {
 	time := time.Now().Format("15:04:05")
-	fmt.Fprintf(os.Stderr, "[%s] ERROR: %s\n", time, msg)
+	log.Fatalf("[%s] ERROR: %s\n", time, msg)
 }

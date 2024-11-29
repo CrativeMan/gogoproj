@@ -15,9 +15,7 @@ build: binFolder
 clean: 
 	$(GOCLEAN)
 	rm -rf $(BINFOLDER)
-	rm -rf test
-	rm -rf main
-
+	
 binFolder:
 	mkdir -p $(BINFOLDER)
 

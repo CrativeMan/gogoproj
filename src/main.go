@@ -6,18 +6,11 @@ import (
 	"main/generators"
 	"main/logger"
 	"main/util"
-	"os"
 )
 
-type User struct {
-	homeDir string
-}
-
 type Project struct {
-	projType   int
-	folder     string
-	flakeCheck bool
-	user       User
+	projType int
+	folder   string
 }
 
 var err error
@@ -28,16 +21,10 @@ var project Project
 func init() {
 	project = Project{}
 	log = logger.NewLogger()
-
-	project.user.homeDir, err = os.UserHomeDir()
-	if err != nil {
-		log.Error("Could not get user home directory")
-	}
 }
 
 func main() {
-	// get project type, flake check and folder
-	project.projType, project.flakeCheck, project.folder, err = forms.InitialForm()
+	project.projType, project.folder, err = forms.InitialForm()
 	if err != nil {
 		log.Error("Could not run initial form")
 		return
@@ -45,14 +32,18 @@ func main() {
 		log.Info(fmt.Sprintf("Project type: %s", util.TypeIntToStr[project.projType]))
 	}
 
-	// move to project folder
-	err = gotoProjectFolder()
+	err = util.GotoFolder(project.folder)
 	if err != nil {
 		log.Error(err.Error())
 		return
 	}
 
-	generators.GenerateFlake(project.flakeCheck, project.projType, log)
+	err = generators.GenerateFlake(project.projType, log)
+	if err != nil {
+		log.Error("Could not generate flake.nix and flake.lock files")
+		return
+	}
+
 	err = generators.GenerateInitialProjectFiles(project.projType, log)
 	if err != nil {
 		log.Error("Could not generate initial project files")

@@ -11,6 +11,8 @@ all: build
 
 build: binFolder
 	cd $(SRCFOLDER) && $(GOBUILD) -o ../$(BINFOLDER)/$(BINARY_NAME) -v
+	rm -rf test
+	rm -rf main
 
 clean: 
 	$(GOCLEAN)
