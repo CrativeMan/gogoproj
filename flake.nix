@@ -44,7 +44,7 @@
 
           src = ./src;
 
-          vendorHash = "sha256-HZDEbwXAoAiEINxWkGmMUzXWnGk0MQ8phwo4HSBmasd=";
+          vendorHash = "sha256-HZDEbwXAoAiEINxWkGmMUzXWnGk0MQ8phwo4HSBmd0c=";
         };
     };
 }
