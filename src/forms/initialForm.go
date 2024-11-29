@@ -1,7 +1,7 @@
 package forms
 
 import (
-	"main/util"
+	"gogo/util"
 
 	"github.com/charmbracelet/huh"
 )

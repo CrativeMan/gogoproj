@@ -3,8 +3,8 @@ package generators
 import (
 	"bytes"
 	"fmt"
-	"main/logger"
-	"main/util"
+	"gogo/logger"
+	"gogo/util"
 	"os/exec"
 )
 

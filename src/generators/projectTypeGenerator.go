@@ -2,8 +2,8 @@ package generators
 
 import (
 	"fmt"
-	"main/logger"
-	"main/util"
+	"gogo/logger"
+	"gogo/util"
 	"os"
 	"os/exec"
 )

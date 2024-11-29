@@ -1,11 +1,11 @@
-package main
+package gogo
 
 import (
 	"fmt"
-	"main/forms"
-	"main/generators"
-	"main/logger"
-	"main/util"
+	"gogo/forms"
+	"gogo/generators"
+	"gogo/logger"
+	"gogo/util"
 )
 
 type Project struct {

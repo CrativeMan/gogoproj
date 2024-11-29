@@ -3,8 +3,8 @@ package generators
 import (
 	"fmt"
 	"io"
-	"main/logger"
-	"main/util"
+	"gogo/logger"
+	"gogo/util"
 	"net/http"
 	"os/exec"
 )
