@@ -21,5 +21,7 @@ func GenerateInitialProjectFiles(projtype int, log logger.Logger) error {
 		log.Error("Invalid project type")
 	}
 
+	
+
 	return nil
 }
