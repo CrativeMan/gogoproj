@@ -5,6 +5,8 @@
 
   outputs = { self, nixpkgs }:
     let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
       goVersion = 22; # Change this to update the whole stack
 
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
@@ -34,5 +36,15 @@
           ];
         };
       });
+
+      packages.x86_64-linux.default = pkgs.buildGoModule
+        rec {
+          pname = "gogoproj";
+          version = "0.2.0";
+
+          src = ./src;
+
+          vendorHash = "sha256-HZDEbwXAoAiEINxWkGmMUzXWnGk0MQ8phwo4HSBmd0c=";
+        };
     };
 }
