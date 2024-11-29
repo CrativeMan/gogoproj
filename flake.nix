@@ -39,8 +39,8 @@
 
       packages.x86_64-linux.default = pkgs.buildGoModule
         rec {
-          pname = "gogoproj";
-          version = "0.2.0";
+          pname = "gogo";
+          version = "1.0.0";
 
           src = ./src;
 
