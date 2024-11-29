@@ -2,9 +2,9 @@ package generators
 
 import (
 	"fmt"
+	"gogoproj/logger"
+	"gogoproj/util"
 	"io"
-	"main/logger"
-	"main/util"
 	"net/http"
 	"os/exec"
 )
