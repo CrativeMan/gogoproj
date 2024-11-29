@@ -3,7 +3,7 @@
 
   inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*.tar.gz";
 
-  outputs = { self, nixpkgs }:
+  outputs = { self, pkgs, nixpkgs }:
     let
       goVersion = 22; # Change this to update the whole stack
 
@@ -34,5 +34,15 @@
           ];
         };
       });
+
+      packages.default = pkgs.buildGoModule
+        rec {
+          pname = "gogoproj";
+          version = "0.1.0";
+
+          src = ./src;
+
+          vendorHash = "sha256-jiy29BPPP2dojTT16uRVRnN3Cs2ZIl2WDmEp4eIcr7A=";
+        };
     };
 }
