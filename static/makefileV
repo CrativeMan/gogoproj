@@ -1,0 +1,17 @@
+V = v
+SRC_DIR = src
+BIN_DIR = bin
+SOURCES = $(wildcard $(SRC_DIR)/*.v)
+BINARY = $(BIN_DIR)/main
+
+
+.PHONY: all
+
+all: $(BINARY)
+$(BINARY): $(SOURCES)
+	@mkdir -p $(BIN_DIR)
+	$(V) -o $(BINARY) $(SRC_DIR)
+
+.PHONY: clean
+clean:
+	@rm -rf $(BIN_DIR)

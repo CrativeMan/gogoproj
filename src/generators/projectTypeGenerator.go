@@ -8,7 +8,7 @@ import (
 	"os/exec"
 )
 
-func GenerateCOrCppProject(projtype int, log logger.Logger) {
+func generateCOrCppProject(projtype int, log logger.Logger) {
 	log.Info(fmt.Sprintf("Generating %s project", util.TypeIntToStr[projtype]))
 	util.CreateFolder("src")
 	var ptype int
@@ -31,17 +31,33 @@ func GenerateCOrCppProject(projtype int, log logger.Logger) {
 	util.GotoFolder(curWd)
 }
 
-func GenerateGoProject(log logger.Logger) {
+func generateGoProject(log logger.Logger) {
 	util.CreateFolder("src")
 	cmd := exec.Command("go", "mod", "init", "main")
 	err := cmd.Run()
 	if err != nil {
 		log.Error(fmt.Sprintf("Could not run command: %v", err))
 	}
-	generateMakefile(util.GO, log)
+	err = generateMakefile(util.GO, log)
+	if err != nil {
+		log.Warn(err.Error())
+	}
 
 	curWd, _ := os.Getwd()
 	util.GotoFolder("src")
 	generateMainFile(util.GO, log)
+	util.GotoFolder(curWd)
+}
+
+func generateVProjekt(log logger.Logger) {
+	util.CreateFolder("src")
+	err := generateMakefile(util.VLANG, log)
+	if err != nil {
+		log.Warn(err.Error())
+	}
+
+	curWd, _ := os.Getwd()
+	util.GotoFolder("src")
+	generateMainFile(util.VLANG, log)
 	util.GotoFolder(curWd)
 }

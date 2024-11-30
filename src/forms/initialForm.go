@@ -18,6 +18,7 @@ func InitialForm() (int, string, error) {
 					huh.NewOption("C++", util.CPP),
 					huh.NewOption("Go", util.GO),
 					huh.NewOption("Rust", util.RUST),
+					huh.NewOption("V", util.VLANG),
 				).
 				Value(&projType),
 

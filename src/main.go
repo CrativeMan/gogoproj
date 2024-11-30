@@ -18,12 +18,9 @@ var err error
 var log logger.Logger
 var project Project
 
-func init() {
+func main() {
 	project = Project{}
 	log = logger.NewLogger()
-}
-
-func main() {
 	project.projType, project.folder, err = forms.InitialForm()
 	if err != nil {
 		log.Error("Could not run initial form")
