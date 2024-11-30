@@ -2,9 +2,9 @@ package generators
 
 import (
 	"fmt"
-	"io"
 	"gogo/logger"
 	"gogo/util"
+	"io"
 	"net/http"
 	"os/exec"
 )
@@ -12,13 +12,15 @@ import (
 func GenerateInitialProjectFiles(projtype int, log logger.Logger) error {
 	switch projtype {
 	case util.C:
-		GenerateCOrCppProject(projtype, log)
+		generateCOrCppProject(projtype, log)
 	case util.CPP:
-		GenerateCOrCppProject(projtype, log)
+		generateCOrCppProject(projtype, log)
 	case util.GO:
-		GenerateGoProject(log)
+		generateGoProject(log)
 	case util.RUST:
 		log.Info("Use 'cargo init' in the new folder to create project")
+	case util.VLANG:
+		generateVProjekt(log)
 	default:
 		return fmt.Errorf("invalid project type: %d", projtype)
 	}
