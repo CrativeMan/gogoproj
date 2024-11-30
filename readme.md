@@ -1,4 +1,4 @@
-> [!WARN] VLANG SUPPORT
+> [!Warning]
 > Vlang support is currently not working as indended
 
 # GOGO
