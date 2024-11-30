@@ -1,3 +1,6 @@
+> [!WARN] VLANG SUPPORT
+> Vlang support is currently not working as indended
+
 # GOGO
 
 A simple project creator intended for personal use. Built in [golang](https://go.dev) and using the [huh](https://github.com/charmbracelet/huh) library.
